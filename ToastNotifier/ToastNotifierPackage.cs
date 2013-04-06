@@ -61,8 +61,6 @@ namespace Company.ToastNotifier
             Debug.WriteLine(string.Format(CultureInfo.CurrentCulture, "Entering constructor for: {0}", this.ToString()));
         }
 
-
-
         /////////////////////////////////////////////////////////////////////////////
         // Overridden Package Implementation
         #region Package Members
@@ -73,7 +71,7 @@ namespace Company.ToastNotifier
         /// </summary>
         protected override void Initialize()
         {
-            Debug.WriteLine (string.Format(CultureInfo.CurrentCulture, "Entering Initialize() of: {0}", this.ToString()));
+            Debug.WriteLine(string.Format(CultureInfo.CurrentCulture, "Entering Initialize() of: {0}", this.ToString()));
             base.Initialize();
 
             var dte = (DTE)GetGlobalService(typeof(DTE));
@@ -82,7 +80,7 @@ namespace Company.ToastNotifier
             dte.Events.BuildEvents.OnBuildBegin += BuildEvents_OnBuildBegin;
             dte.Events.BuildEvents.OnBuildDone += BuildEvents_OnBuildDone;
         }
-       
+
         void BuildEvents_OnBuildProjConfigBegin(string Project, string ProjectConfig, string Platform, string SolutionConfig)
         {
             LastBuiltProject = Project;
@@ -110,7 +108,7 @@ namespace Company.ToastNotifier
             BuildStarted = false;
             var dte = (DTE)GetGlobalService(typeof(DTE));
             if (GetForegroundWindow() == (IntPtr)dte.MainWindow.HWnd) return;
-            ShowToast(String.Format("{0} - {1}", Failed == 0 ? Resources.Strings.BuildSucceeded : Resources.Strings.BuildFailed, 
+            ShowToast(String.Format("{0} - {1}", Failed == 0 ? Resources.Strings.BuildSucceeded : Resources.Strings.BuildFailed,
                 Scope == vsBuildScope.vsBuildScopeSolution ? Path.GetFileNameWithoutExtension(dte.Solution.FullName) : LastBuiltProject),
                 String.Format("{0}: {3}, {1}: {4}\n{2}: {5}",
                 Resources.Strings.Success, Resources.Strings.Fail, Resources.Strings.TimeElapsed,
@@ -126,10 +124,32 @@ namespace Company.ToastNotifier
             toastXml.GetElementsByTagName("text").Last().AppendChild(toastXml.CreateTextNode(message));
 
             // Notifierを作成してShowメソッドで通知
-            var notifier = ToastNotificationManager.CreateToastNotifier(ApplicationID);
+            var dte = GetGlobalService(typeof(DTE)) as DTE;
+            var notifier = ToastNotificationManager.CreateToastNotifier(EditionToAppUserModelId(dte.Edition));
             notifier.Show(new ToastNotification(toastXml));
         }
         #endregion
+
+        /// <summary>
+        /// 各エディションに対するAppUserModelIdを取得する
+        /// </summary>
+        /// <param name="edition">DTE.Editionの値</param>
+        /// <returns>対応するAppUserModelId</returns>
+        string EditionToAppUserModelId(string edition)
+        {
+            switch (edition)
+            {
+                case "WD Express":
+                    return "VWDExpress.11.0";
+                case "Desktop Express":
+                    return "WDExpress.11.0";
+                case "VSWin Express":
+                    return "VSWinExpress.11.0";
+                case "PD Express":
+                    return "VPDExpress.11.0";
+            }
+            return ApplicationID;
+        }
 
     }
 }
