@@ -14,6 +14,7 @@ using Microsoft.VisualStudio.Shell;
 using Windows.UI.Notifications;
 using System.Collections;
 using System.Collections.Generic;
+using Windows.ApplicationModel;
 
 namespace Company.ToastNotifier
 {
@@ -37,7 +38,7 @@ namespace Company.ToastNotifier
     [ProvideAutoLoad(VSConstants.UICONTEXT.SolutionExists_string)]
     public sealed class ToastNotifierPackage : Package
     {
-        private string ApplicationID = "VisualStudio.11.0";
+        private string ApplicationID = "VisualStudio.";
 
         private int Succeeded = 0;
         private int Failed = 0;
@@ -125,7 +126,7 @@ namespace Company.ToastNotifier
 
             // Notifierを作成してShowメソッドで通知
             var dte = GetGlobalService(typeof(DTE)) as DTE;
-            var notifier = ToastNotificationManager.CreateToastNotifier(EditionToAppUserModelId(dte.Edition));
+            var notifier = ToastNotificationManager.CreateToastNotifier(EditionToAppUserModelId(dte.Edition, dte.Version));
             notifier.Show(new ToastNotification(toastXml));
         }
         #endregion
@@ -134,21 +135,22 @@ namespace Company.ToastNotifier
         /// 各エディションに対するAppUserModelIdを取得する
         /// </summary>
         /// <param name="edition">DTE.Editionの値</param>
+        /// <param name="version"></param>
         /// <returns>対応するAppUserModelId</returns>
-        string EditionToAppUserModelId(string edition)
+        string EditionToAppUserModelId(string edition, string version)
         {
             switch (edition)
             {
                 case "WD Express":
-                    return "VWDExpress.11.0";
+                    return "VWDExpress." + version;
                 case "Desktop Express":
-                    return "WDExpress.11.0";
+                    return "WDExpress." + version;
                 case "VSWin Express":
-                    return "VSWinExpress.11.0";
+                    return "VSWinExpress." + version;
                 case "PD Express":
-                    return "VPDExpress.11.0";
+                    return "VPDExpress." + version;
             }
-            return ApplicationID;
+            return ApplicationID + version;
         }
 
     }
