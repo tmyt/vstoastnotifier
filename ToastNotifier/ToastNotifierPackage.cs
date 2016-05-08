@@ -14,7 +14,6 @@ using Microsoft.VisualStudio.Shell;
 using Windows.UI.Notifications;
 using System.Collections;
 using System.Collections.Generic;
-using Windows.ApplicationModel;
 
 namespace Company.ToastNotifier
 {
