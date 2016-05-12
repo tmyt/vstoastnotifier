@@ -6,7 +6,7 @@ The extension enables build completion notification from Visual Studio via Windo
 Requirements
 ----
 
-- Windows 8, 8.1, 10
+- Windows 8, 8.1 or 10
 - Visual Studio 2012, 2013, 2015 or 15 Pewview
 
 Install
