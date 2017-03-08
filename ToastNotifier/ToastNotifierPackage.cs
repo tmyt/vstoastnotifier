@@ -4,16 +4,10 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.ComponentModel.Design;
 using EnvDTE;
-using Microsoft.Win32;
 using Microsoft.VisualStudio;
-using Microsoft.VisualStudio.Shell.Interop;
-using Microsoft.VisualStudio.OLE.Interop;
 using Microsoft.VisualStudio.Shell;
 using Windows.UI.Notifications;
-using System.Collections;
-using System.Collections.Generic;
 
 namespace Company.ToastNotifier
 {
