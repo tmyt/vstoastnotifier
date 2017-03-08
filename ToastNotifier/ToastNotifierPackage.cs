@@ -8,6 +8,7 @@ using EnvDTE;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Shell;
 using Windows.UI.Notifications;
+using Company.ToastNotifier.Interop;
 
 namespace Company.ToastNotifier
 {
@@ -38,10 +39,6 @@ namespace Company.ToastNotifier
         private DateTime BuildStartedOn;
         private bool BuildStarted;
         private string LastBuiltProject;
-
-        /// <summary>The GetForegroundWindow function returns a handle to the foreground window.</summary>
-        [DllImport("user32.dll")]
-        private static extern IntPtr GetForegroundWindow();
 
         /// <summary>
         /// Default constructor of the package.
@@ -101,7 +98,7 @@ namespace Company.ToastNotifier
             if (!BuildStarted) return;
             BuildStarted = false;
             var dte = (DTE)GetGlobalService(typeof(DTE));
-            if (GetForegroundWindow() == (IntPtr)dte.MainWindow.HWnd) return;
+            if (User32.GetForegroundWindow() == (IntPtr)dte.MainWindow.HWnd) return;
             ShowToast(String.Format("{0} - {1}", Failed == 0 ? Resources.Strings.BuildSucceeded : Resources.Strings.BuildFailed,
                 Scope == vsBuildScope.vsBuildScopeSolution ? Path.GetFileNameWithoutExtension(dte.Solution.FullName) : LastBuiltProject),
                 String.Format("{0}: {3}, {1}: {4}\n{2}: {5}",
@@ -143,7 +140,9 @@ namespace Company.ToastNotifier
                 case "PD Express":
                     return "VPDExpress." + version;
             }
-            return ApplicationID + version;
+            // detect AppUserModelId
+            var s = Shell32.GetCurrentProcessExplicitAppUserModelID();
+            return !string.IsNullOrEmpty(s) ? s : ApplicationID + version;
         }
 
     }
