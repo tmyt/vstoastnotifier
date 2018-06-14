@@ -7,7 +7,7 @@ Requirements
 ----
 
 - Windows 8, 8.1 or 10
-- Visual Studio 2012, 2013, 2015 or 15 Pewview
+- Visual Studio 2012, 2013, 2015 or 2017
 
 Install
 ----
