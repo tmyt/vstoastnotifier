@@ -1,8 +1,9 @@
 ﻿// Guids.cs
 // MUST match guids.h
+
 using System;
 
-namespace Company.ToastNotifier
+namespace Vsix.ToastNotifier
 {
     static class GuidList
     {

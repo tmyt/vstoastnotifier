@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace Company.ToastNotifier.Interop
+namespace Vsix.ToastNotifier.Interop
 {
     static class User32
     {

@@ -4,13 +4,13 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
-using EnvDTE;
 using Windows.UI.Notifications;
-using Company.ToastNotifier.Interop;
+using EnvDTE;
 using Microsoft.VisualStudio;
 using Microsoft.VisualStudio.Shell;
+using Vsix.ToastNotifier.Interop;
 
-namespace Company.ToastNotifier
+namespace Vsix.ToastNotifier
 {
     /// <summary>
     /// This is the class that implements the package exposed by this assembly.
