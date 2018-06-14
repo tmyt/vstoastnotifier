@@ -5,10 +5,10 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using EnvDTE;
-using Microsoft.VisualStudio;
-using Microsoft.VisualStudio.Shell;
 using Windows.UI.Notifications;
 using Company.ToastNotifier.Interop;
+using Microsoft.VisualStudio;
+using Microsoft.VisualStudio.Shell;
 
 namespace Company.ToastNotifier
 {
