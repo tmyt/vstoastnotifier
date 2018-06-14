@@ -61,7 +61,7 @@ namespace Company.ToastNotifier.Resources {
         }
         
         /// <summary>
-        ///   Build was fail. に類似しているローカライズされた文字列を検索します。
+        ///   Build was unsuccessful. に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string BuildFailed {
             get {
