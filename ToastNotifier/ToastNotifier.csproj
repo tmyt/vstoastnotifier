@@ -47,6 +47,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Runtime.InteropServices.WindowsRuntime" />
     <Reference Include="System.Runtime.WindowsRuntime, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -56,7 +57,12 @@
     <Reference Include="Windows" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Guids.cs" />
+    <Compile Include="Extensions\ToastNotificationExtension.cs" />
+    <Compile Include="Product\BuildEvents.cs" />
+    <Compile Include="Product\BuildNotifier.cs" />
+    <Compile Include="Extensions\WindowExtension.cs" />
+    <Compile Include="Product\ToastBuilder.cs" />
+    <Compile Include="Properties\Guids.cs" />
     <Compile Include="Interop\Ole32.cs" />
     <Compile Include="Interop\Shell32.cs" />
     <Compile Include="Interop\User32.cs" />
@@ -66,7 +72,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
-    <Compile Include="ToastNotifierPackage.cs" />
+    <Compile Include="Product\ToastNotifierPackage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -101,6 +107,7 @@
       <Version>11.0.4</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <UseCodebase>true</UseCodebase>
   </PropertyGroup>

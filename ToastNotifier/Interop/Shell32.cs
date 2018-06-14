@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace Vsix.ToastNotifier.Interop
 {
-    static class Shell32
+    internal static class Shell32
     {
         [DllImport("Shell32.dll")]
         public static extern IntPtr GetCurrentProcessExplicitAppUserModelID(out IntPtr AppID);
@@ -12,7 +12,7 @@ namespace Vsix.ToastNotifier.Interop
         {
             IntPtr pv;
             GetCurrentProcessExplicitAppUserModelID(out pv);
-            if (pv == null) return null;
+            if (pv == IntPtr.Zero) return null;
             var s = Marshal.PtrToStringAuto(pv);
             Ole32.CoTaskMemFree(pv);
             return s;
