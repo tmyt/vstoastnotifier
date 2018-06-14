@@ -60,12 +60,12 @@
     <Compile Include="Interop\Ole32.cs" />
     <Compile Include="Interop\Shell32.cs" />
     <Compile Include="Interop\User32.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Resources\Strings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
-    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="ToastNotifierPackage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -73,13 +73,12 @@
     <EmbeddedResource Include="Resources\Strings.en-US.resx" />
     <EmbeddedResource Include="Resources\Strings.ja-JP.resx" />
     <EmbeddedResource Include="Resources\Strings.resx">
+      <SubType>Designer</SubType>
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="VSPackage.resx">
-      <MergeWithCTO>true</MergeWithCTO>
-      <ManifestResourceName>VSPackage</ManifestResourceName>
+    <EmbeddedResource Include="Resources\VSPackage.resx">
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
