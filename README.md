@@ -7,7 +7,7 @@ Requirements
 ----
 
 - Windows 8, 8.1 or 10
-- Visual Studio 2012, 2013, 2015 or 2017
+- Visual Studio 2012, 2013, 2015, 2017 or 2019
 
 Install
 ----
