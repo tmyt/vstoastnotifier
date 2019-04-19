@@ -1,14 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
   <PropertyGroup>
     <MinimumVisualStudioVersion>15.0</MinimumVisualStudioVersion>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -23,7 +20,7 @@
     <AssemblyName>ToastNotifier</AssemblyName>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>Key.snk</AssemblyOriginatorKeyFile>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <TargetPlatformVersion>8.0</TargetPlatformVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -46,6 +43,9 @@
     <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.Shell.Interop.14.0.DesignTime, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Design" />
     <Reference Include="System.Runtime.InteropServices.WindowsRuntime" />
@@ -57,7 +57,11 @@
     <Reference Include="Windows" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsyncPackageHelpers\AsyncPackageRegistrationAttribute.cs" />
+    <Compile Include="AsyncPackageHelpers\ExtensionMethods.cs" />
+    <Compile Include="AsyncPackageHelpers\ProvideAutoLoadAttribute.cs" />
     <Compile Include="Extensions\ToastNotificationExtension.cs" />
+    <Compile Include="Extensions\VsixExtensions.cs" />
     <Compile Include="Product\BuildEvents.cs" />
     <Compile Include="Product\BuildNotifier.cs" />
     <Compile Include="Extensions\WindowExtension.cs" />
@@ -107,7 +111,6 @@
       <Version>11.0.4</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup>
     <UseCodebase>true</UseCodebase>
   </PropertyGroup>
