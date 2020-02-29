@@ -12,7 +12,7 @@ Requirements
 Install
 ----
 
-Open Visual Studio Extension Galally, Search 'ToastNotifier'.
+Open Visual Studio Extension Gallery, Search 'ToastNotifier'.
 
 https://visualstudiogallery.msdn.microsoft.com/7aa63d6e-5701-40e4-9b91-9039a7d6ba26
 
