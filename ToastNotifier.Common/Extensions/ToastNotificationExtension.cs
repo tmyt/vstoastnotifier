@@ -3,6 +3,11 @@ using Vsix.ToastNotifier.Interop;
 using System;
 using EnvDTE;
 using Microsoft.VisualStudio.Shell;
+#if DevEnv11
+using ToastNotifier.Common;
+#else
+using ThreadHelperCompat = Microsoft.VisualStudio.Shell.ThreadHelper;
+#endif
 
 namespace Vsix.ToastNotifier.Extensions
 {
@@ -11,12 +16,14 @@ namespace Vsix.ToastNotifier.Extensions
         private static string ApplicationID = "VisualStudio.";
         private static readonly Lazy<Windows.UI.Notifications.ToastNotifier> Notifier = new Lazy<Windows.UI.Notifications.ToastNotifier>(() =>
         {
+            ThreadHelperCompat.ThrowIfNotOnUIThread();
             var dte = (DTE)Package.GetGlobalService(typeof(DTE));
             return ToastNotificationManager.CreateToastNotifier(EditionToAppUserModelId(dte.Edition, dte.Version));
         });
 
         public static void Show(this ToastNotification notification)
         {
+            ThreadHelperCompat.ThrowIfNotOnUIThread();
             // Suppress toast in foreground
             var dte = (DTE)Package.GetGlobalService(typeof(DTE));
             if (dte.MainWindow.IsForegroundWindow()) return;

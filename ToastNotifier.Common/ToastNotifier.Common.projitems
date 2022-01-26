@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>c1eb912d-0c74-4bad-be02-ffed0c579081</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>ToastNotifier.Common</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\ToastNotificationExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\VsixExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\WindowExtension.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GlobalSuppressions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interop\Ole32.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interop\Shell32.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interop\User32.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Product\BuildEvents.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Product\BuildNotifier.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Product\ToastBuilder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Product\ToastNotifierPackage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ThreadHelperCompat.cs" />
+  </ItemGroup>
+</Project>

@@ -3,6 +3,11 @@ using System.IO;
 using EnvDTE;
 using Microsoft.VisualStudio.Shell;
 using Vsix.ToastNotifier.Extensions;
+#if DevEnv11
+using ToastNotifier.Common;
+#else
+using ThreadHelperCompat = Microsoft.VisualStudio.Shell.ThreadHelper;
+#endif
 
 namespace Vsix.ToastNotifier.Product
 {
@@ -54,6 +59,7 @@ namespace Vsix.ToastNotifier.Product
 
         private string GetTargetName(vsBuildScope scope)
         {
+            ThreadHelperCompat.ThrowIfNotOnUIThread();
             var dte = (DTE)Package.GetGlobalService(typeof(DTE));
             return scope == vsBuildScope.vsBuildScopeSolution
                 ? Path.GetFileNameWithoutExtension(dte.Solution.FullName)

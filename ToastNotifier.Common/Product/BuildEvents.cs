@@ -1,5 +1,10 @@
 ﻿using System;
 using EnvDTE;
+#if DevEnv11
+using ToastNotifier.Common;
+#else
+using ThreadHelperCompat = Microsoft.VisualStudio.Shell.ThreadHelper;
+#endif
 
 namespace Vsix.ToastNotifier.Product
 {
@@ -36,6 +41,7 @@ namespace Vsix.ToastNotifier.Product
 
         private void Register()
         {
+            ThreadHelperCompat.ThrowIfNotOnUIThread();
             _dte.Events.BuildEvents.OnBuildProjConfigBegin += OnBuildProjConfigBegin;
             _dte.Events.BuildEvents.OnBuildProjConfigDone += OnBuildProjConfigDone;
             _dte.Events.BuildEvents.OnBuildBegin += OnBuildBegin;
@@ -44,6 +50,7 @@ namespace Vsix.ToastNotifier.Product
 
         private void Unregister()
         {
+            ThreadHelperCompat.ThrowIfNotOnUIThread();
             _dte.Events.BuildEvents.OnBuildProjConfigBegin -= OnBuildProjConfigBegin;
             _dte.Events.BuildEvents.OnBuildProjConfigDone -= OnBuildProjConfigDone;
             _dte.Events.BuildEvents.OnBuildBegin -= OnBuildBegin;

@@ -1,22 +1,48 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToastNotifier", "ToastNotifier\ToastNotifier.csproj", "{57101464-BAD4-4EEF-AEA1-9A38308C2F75}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToastNotifier.Legacy", "ToastNotifier.Legacy\ToastNotifier.Legacy.csproj", "{57101464-BAD4-4EEF-AEA1-9A38308C2F75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToastNotifier", "ToastNotifier\ToastNotifier.csproj", "{293C394F-906F-4F23-9CB6-43023CECEDCD}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ToastNotifier.Common", "ToastNotifier.Common\ToastNotifier.Common.shproj", "{C1EB912D-0C74-4BAD-BE02-FFED0C579081}"
 EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		ToastNotifier.Common\ToastNotifier.Common.projitems*{293c394f-906f-4f23-9cb6-43023cecedcd}*SharedItemsImports = 4
+		ToastNotifier.Common\ToastNotifier.Common.projitems*{57101464-bad4-4eef-aea1-9a38308c2f75}*SharedItemsImports = 4
+		ToastNotifier.Common\ToastNotifier.Common.projitems*{c1eb912d-0c74-4bad-be02-ffed0c579081}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
 		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{57101464-BAD4-4EEF-AEA1-9A38308C2F75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{57101464-BAD4-4EEF-AEA1-9A38308C2F75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57101464-BAD4-4EEF-AEA1-9A38308C2F75}.Debug|x86.ActiveCfg = Debug|x86
+		{57101464-BAD4-4EEF-AEA1-9A38308C2F75}.Debug|x86.Build.0 = Debug|x86
 		{57101464-BAD4-4EEF-AEA1-9A38308C2F75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57101464-BAD4-4EEF-AEA1-9A38308C2F75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57101464-BAD4-4EEF-AEA1-9A38308C2F75}.Release|x86.ActiveCfg = Release|x86
+		{57101464-BAD4-4EEF-AEA1-9A38308C2F75}.Release|x86.Build.0 = Release|x86
+		{293C394F-906F-4F23-9CB6-43023CECEDCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{293C394F-906F-4F23-9CB6-43023CECEDCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{293C394F-906F-4F23-9CB6-43023CECEDCD}.Debug|x86.ActiveCfg = Debug|x86
+		{293C394F-906F-4F23-9CB6-43023CECEDCD}.Debug|x86.Build.0 = Debug|x86
+		{293C394F-906F-4F23-9CB6-43023CECEDCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{293C394F-906F-4F23-9CB6-43023CECEDCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{293C394F-906F-4F23-9CB6-43023CECEDCD}.Release|x86.ActiveCfg = Release|x86
+		{293C394F-906F-4F23-9CB6-43023CECEDCD}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {12AA83A1-640F-421A-85C8-29D528D4C110}
 	EndGlobalSection
 EndGlobal
