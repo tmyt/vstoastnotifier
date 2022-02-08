@@ -7,14 +7,18 @@ Requirements
 ----
 
 - Windows 8, 8.1 or 10
-- Visual Studio 2012, 2013, 2015, 2017 or 2019
+- Visual Studio 2012, 2013, 2015, 2017, 2019 or 2022
 
 Install
 ----
 
-Open Visual Studio Extension Gallery, Search 'ToastNotifier'.
+Open Visual Studio Extension Gallery, Search 'ToastNotifier' or 'ToastNotifier (Legacy)'.
 
-https://visualstudiogallery.msdn.microsoft.com/7aa63d6e-5701-40e4-9b91-9039a7d6ba26
+### for VS2022 or newer
+https://marketplace.visualstudio.com/items?itemName=tmyt.ToastNotifier
+
+### for VS2019 or earlier
+https://marketplace.visualstudio.com/items?itemName=tmyt.ToastNotifierLegacy
 
 License
 ----
