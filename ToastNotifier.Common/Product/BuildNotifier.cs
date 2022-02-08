@@ -19,7 +19,7 @@ namespace Vsix.ToastNotifier.Product
         private bool _buildIsProgress;
         private string _lastBuiltProject;
 
-        public BuildNotifier(DTE dte) : base(dte)
+        public BuildNotifier(EnvDTE.BuildEvents buildEvents) : base(buildEvents)
         {
         }
 

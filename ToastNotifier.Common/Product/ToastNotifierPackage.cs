@@ -29,6 +29,8 @@ namespace Vsix.ToastNotifier.Product
     public sealed class ToastNotifierPackage : AsyncPackage, IAsyncLoadablePackageInitialize
     {
         private BuildNotifier _notifier;
+        public EnvDTE.BuildEvents BuildEvents { get; set; }
+
 
 #if DevEnv11
         private bool _isAsyncLoadSupported;
@@ -45,7 +47,9 @@ namespace Vsix.ToastNotifier.Product
             _isAsyncLoadSupported = this.IsAsyncPackageSupported();
             if (!_isAsyncLoadSupported)
             {
-                _notifier = new BuildNotifier((DTE)GetGlobalService(typeof(DTE)));
+                var dte = (DTE)GetGlobalService(typeof(DTE));
+                BuildEvents = dte.Events.BuildEvents;
+                _notifier = new BuildNotifier(BuildEvents);
             }
         }
         
@@ -54,7 +58,9 @@ namespace Vsix.ToastNotifier.Product
             var scheduler = GetService(typeof(SVsTaskSchedulerService)) as IVsTaskSchedulerService;
             return scheduler.Run(VsTaskRunContext.UIThreadIdlePriority, async () =>
             {
-                _notifier = new BuildNotifier(await pServiceProvider.GetServiceAsync<DTE>(typeof(DTE)));
+                var dte = await pServiceProvider.GetServiceAsync<DTE>(typeof(DTE));
+                BuildEvents = dte.Events.BuildEvents;
+                _notifier = new BuildNotifier(BuildEvents);
             });
         }
 #else
@@ -62,7 +68,9 @@ namespace Vsix.ToastNotifier.Product
         {
             await base.InitializeAsync(cancellationToken, progress);
             await JoinableTaskFactory.SwitchToMainThreadAsync(cancellationToken);
-            _notifier = new BuildNotifier((DTE)await GetServiceAsync(typeof(DTE)));
+            var dte = (DTE)await GetServiceAsync(typeof(DTE));
+            BuildEvents = dte.Events.BuildEvents;
+            _notifier = new BuildNotifier(BuildEvents);
         }
 #endif
 

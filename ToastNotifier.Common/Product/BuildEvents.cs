@@ -10,11 +10,11 @@ namespace Vsix.ToastNotifier.Product
 {
     public class BuildEvents : IDisposable
     {
-        private readonly DTE _dte;
+        private readonly EnvDTE.BuildEvents _buildEvents;
 
-        public BuildEvents(DTE dte)
+        public BuildEvents(EnvDTE.BuildEvents buildEvents)
         {
-            _dte = dte;
+            _buildEvents = buildEvents;
             Register();
         }
 
@@ -42,19 +42,19 @@ namespace Vsix.ToastNotifier.Product
         private void Register()
         {
             ThreadHelperCompat.ThrowIfNotOnUIThread();
-            _dte.Events.BuildEvents.OnBuildProjConfigBegin += OnBuildProjConfigBegin;
-            _dte.Events.BuildEvents.OnBuildProjConfigDone += OnBuildProjConfigDone;
-            _dte.Events.BuildEvents.OnBuildBegin += OnBuildBegin;
-            _dte.Events.BuildEvents.OnBuildDone += OnBuildDone;
+            _buildEvents.OnBuildProjConfigBegin += OnBuildProjConfigBegin;
+            _buildEvents.OnBuildProjConfigDone += OnBuildProjConfigDone;
+            _buildEvents.OnBuildBegin += OnBuildBegin;
+            _buildEvents.OnBuildDone += OnBuildDone;
         }
 
         private void Unregister()
         {
             ThreadHelperCompat.ThrowIfNotOnUIThread();
-            _dte.Events.BuildEvents.OnBuildProjConfigBegin -= OnBuildProjConfigBegin;
-            _dte.Events.BuildEvents.OnBuildProjConfigDone -= OnBuildProjConfigDone;
-            _dte.Events.BuildEvents.OnBuildBegin -= OnBuildBegin;
-            _dte.Events.BuildEvents.OnBuildDone -= OnBuildDone;
+            _buildEvents.OnBuildProjConfigBegin -= OnBuildProjConfigBegin;
+            _buildEvents.OnBuildProjConfigDone -= OnBuildProjConfigDone;
+            _buildEvents.OnBuildBegin -= OnBuildBegin;
+            _buildEvents.OnBuildDone -= OnBuildDone;
         }
     }
 }
